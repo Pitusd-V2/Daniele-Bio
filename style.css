@@ -1,0 +1,583 @@
+:root {
+    --bg-color: #0d0d0d;
+    --text-color: #eeeeee;
+    --accent-color: #00ff41;
+    /* Matrix Green */
+    --accent-secondary: #ff0055;
+    /* Glitch Red */
+    --card-bg: #1a1a1a;
+    --font-main: 'Courier Prime', monospace;
+    --font-pixel: 'Press Start 2P', cursive;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Header & Glitch Effect */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1.glitch {
+    font-family: var(--font-pixel);
+    font-size: 3rem;
+    position: relative;
+    color: var(--text-color);
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+}
+
+h1.glitch::before,
+h1.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1.glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 var(--accent-secondary);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+h1.glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 var(--accent-color);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(30px, 9999px, 10px, 0);
+    }
+
+    5% {
+        clip: rect(80px, 9999px, 90px, 0);
+    }
+
+    10% {
+        clip: rect(10px, 9999px, 40px, 0);
+    }
+
+    15% {
+        clip: rect(50px, 9999px, 20px, 0);
+    }
+
+    20% {
+        clip: rect(10px, 9999px, 80px, 0);
+    }
+
+    100% {
+        clip: rect(60px, 9999px, 30px, 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(10px, 9999px, 80px, 0);
+    }
+
+    5% {
+        clip: rect(50px, 9999px, 20px, 0);
+    }
+
+    10% {
+        clip: rect(10px, 9999px, 40px, 0);
+    }
+
+    15% {
+        clip: rect(80px, 9999px, 90px, 0);
+    }
+
+    20% {
+        clip: rect(30px, 9999px, 10px, 0);
+    }
+
+    100% {
+        clip: rect(50px, 9999px, 20px, 0);
+    }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+}
+
+.cross {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Bio Card */
+.bio-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border: 2px solid var(--text-color);
+    box-shadow: 10px 10px 0px var(--accent-secondary);
+    position: relative;
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease;
+}
+
+.bio-card:hover {
+    transform: rotate(0deg) scale(1.01);
+}
+
+.tape-strip {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left: 2px dashed rgba(0, 0, 0, 0.1);
+    border-right: 2px dashed rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bio-card h2 {
+    font-family: var(--font-pixel);
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.bio-card p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.quote {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #ccc;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Experience Box */
+.experience-box {
+    border-left: 2px solid var(--accent-secondary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+}
+
+.experience-box h3 {
+    color: var(--accent-secondary);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+}
+
+.experience-box ul {
+    list-style: none;
+}
+
+.experience-box li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.experience-box li::before {
+    content: "> ";
+    color: var(--accent-color);
+}
+
+/* CTA & Button */
+.cta-container {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.arrow {
+    font-size: 2rem;
+    margin: 1rem 0;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+}
+
+.pixel-btn {
+    font-family: var(--font-pixel);
+    background: var(--accent-color);
+    color: #000;
+    border: 4px solid #000;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 6px 6px 0px #fff;
+    transition: all 0.1s;
+    text-transform: uppercase;
+}
+
+.pixel-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px #fff;
+}
+
+.pixel-btn.small {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    box-shadow: 3px 3px 0px #fff;
+}
+
+/* Game Container */
+.hidden {
+    display: none !important;
+}
+
+#game-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-ui {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#score {
+    font-family: var(--font-pixel);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+#game-canvas {
+    border: 2px solid var(--accent-color);
+    background: #000;
+    box-shadow: 0 0 20px var(--accent-color);
+    max-width: 100%;
+}
+
+#game-over-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: #000;
+    padding: 2rem;
+    border: 4px solid var(--accent-secondary);
+}
+
+#game-over-screen h2 {
+    font-family: var(--font-pixel);
+    color: var(--accent-secondary);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+#game-over-screen p {
+    margin-bottom: 2rem;
+}
+
+/* Responsive */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1.glitch {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .bio-card {
+        padding: 1.5rem;
+        box-shadow: 6px 6px 0px var(--accent-secondary);
+    }
+
+    .bio-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .bio-card p {
+        font-size: 1rem;
+    }
+
+    .experience-box h3 {
+        font-size: 0.8rem;
+    }
+
+    .experience-box li {
+        font-size: 0.9rem;
+    }
+
+    .pixel-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .cta-container {
+        margin-top: 3rem;
+    }
+
+    #game-canvas {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .game-ui {
+        top: 10px;
+        right: 10px;
+        gap: 15px;
+    }
+
+    #score {
+        font-size: 1.2rem;
+    }
+
+    #game-over-screen {
+        padding: 1.5rem;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    #game-over-screen h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+
+    header {
+        margin-bottom: 2rem;
+    }
+
+    h1.glitch {
+        font-size: 1.8rem;
+        letter-spacing: 0;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .bio-card {
+        padding: 1.2rem;
+        box-shadow: 4px 4px 0px var(--accent-secondary);
+        transform: rotate(0deg);
+    }
+
+    .bio-card:hover {
+        transform: rotate(0deg) scale(1.01);
+    }
+
+    .tape-strip {
+        width: 80px;
+        height: 25px;
+        top: -12px;
+    }
+
+    .bio-card h2 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .bio-card p {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .quote {
+        padding-left: 0.8rem;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+    .experience-box {
+        padding: 0.8rem;
+        margin: 1rem 0;
+    }
+
+    .experience-box h3 {
+        font-size: 0.7rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .experience-box li {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .cta-container {
+        margin-top: 2rem;
+    }
+
+    .cta-container p {
+        font-size: 0.95rem;
+    }
+
+    .arrow {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .pixel-btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+        box-shadow: 4px 4px 0px #fff;
+    }
+
+    .pixel-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px #fff;
+    }
+
+    .pixel-btn.small {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+        box-shadow: 2px 2px 0px #fff;
+    }
+
+    /* Game adjustments for mobile */
+    #game-canvas {
+        width: 95vw;
+        max-width: 350px;
+        height: 95vw;
+        max-height: 350px;
+    }
+
+    .game-ui {
+        top: 5px;
+        right: 5px;
+        left: 5px;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    #score {
+        font-size: 0.9rem;
+    }
+
+    #game-over-screen {
+        padding: 1rem;
+        width: 85%;
+        max-width: 300px;
+    }
+
+    #game-over-screen h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    #game-over-screen p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 400px) {
+    h1.glitch {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .bio-card {
+        padding: 1rem;
+    }
+
+    .bio-card h2 {
+        font-size: 0.9rem;
+    }
+
+    .bio-card p {
+        font-size: 0.9rem;
+    }
+
+    .experience-box h3 {
+        font-size: 0.65rem;
+    }
+
+    .experience-box li {
+        font-size: 0.8rem;
+    }
+
+    #game-canvas {
+        max-width: 280px;
+        max-height: 280px;
+    }
+
+    #score {
+        font-size: 0.8rem;
+    }
+
+    #game-over-screen h2 {
+        font-size: 1rem;
+    }
+}
