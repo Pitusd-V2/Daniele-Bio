@@ -1,103 +1,18 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniele | Cinema & Tech</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Daniele</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-    <div class="container">
-        <header>
-            <h1 class="glitch" data-text="DANIELE">DANIELE</h1>
-            <span class="highlight">Cinema</span> & <span class="highlight">Code</span>
-            </p>
-        </header>
-
-        <main id="main-content">
-            <section class="bio-card">
-                <div class="tape-strip"></div>
-                <h2>Chi sono?</h2>
-                <p>
-                    Ciao, sono <strong>Daniele</strong>.
-                </p>
-                <p>
-                    <strong> Benvenuti nella mia vita</strong>
-                    <br>
-                    Sono mancino 
-                    significa lottare quotidianamente con forbici progettate male, quaderni che si macchiano mentre
-                    scrivi,
-                    e un mondo fatto per destri. 🥲🥲
-                    <br>
-                    <br>
-                    <strong>Ci saranno pure dei vantaggi per essere mancini no?!</strong>
-                </p>
-                <p>
-                    Ho studiato cinema perché volevo raccontare storie con le immagini.
-                    Poi ho scoperto che anche il codice racconta storie, solo che invece di attori usa funzioni,
-                    e invece di scene usa algoritmi. Stessa passione, linguaggio diverso.
-                </p>
-
-                <div class="experience-box">
-                    <h3>🎬 Cinema & Video</h3>
-                    <ul>
-                        <li><strong>Comicon 2025</strong>: Giornalista & Videomaker.</li>
-                        <li>Lavorazione su vari <strong>cortometraggi</strong> e un <strong>documentario come montatore
-                                e fonico a presa diretta</strong>.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-box">
-                    <h3>💻 Tech & AI</h3>
-                    <ul>
-                        <li>Membro di un<strong> ESC30 riguardo l'AI</strong> (Unione Europea).</li>
-                        <li>Sviluppo di progetti personali e collaborazioni varie.</li>
-                    </ul>
-                </div>
-
-                <p>
-                    Oggi vivo tra due mondi: sviluppo progetti tech, collaboro con team e sperimento con
-                    l'AI.
-                    Ma quando squilla il telefono e c'è bisogno di una camera, torno sul set come
-                    <strong>Videomaker</strong>.
-                    Perché alla fine, che sia codice o cinema, sto sempre raccontando storie.
-                </p>
-            </section>
-
-            <div class="cta-container">
-                <p>Adesso che hai sprecato secondi vitali della tua vita, ti ripaghero cosi!</p>
-                <p class="arrow">⬇️</p>
-                <button id="play-btn" class="pixel-btn">🤔</button>
-            </div>
-        </main>
-
-        <div id="game-container" class="hidden">
-            <div class="game-ui">
-                <div id="score">SCORE: 0</div>
-                <button id="close-game" class="pixel-btn small">X</button>
-            </div>
-            <canvas id="game-canvas"></canvas>
-            <div id="game-over-screen" class="hidden">
-                <h2>GAME OVER</h2>
-                <p>Ok adesso puoi andartene, grazie del tuo tempo 💖 </p>
-                <button id="restart-btn" class="pixel-btn">RESTART</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  <div id="root"></div>
+  <script type="text/babel" src="app.jsx"></script>
 </body>
-
-
 </html>
-
-
-
