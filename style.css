@@ -77,6 +77,7 @@ body::before {
 .grid-2-studi { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
 .nav-container { padding: 0 2.5rem; }
+.nav-links-wrapper { gap: 2rem; }
 .hamburger-btn { display: none !important; }
 .mobile-menu {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
