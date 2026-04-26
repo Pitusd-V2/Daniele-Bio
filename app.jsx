@@ -78,7 +78,7 @@ function Nav({ mode, setMode }) {
         <span className="nav-brand" style={{ fontFamily: 'Space Mono', fontSize: '0.75rem', color: 'var(--fg3)', letterSpacing: '0.15em', zIndex: 101 }}>
           PORTFOLIO
         </span>
-        <div style={{ display: 'flex', alignItems: 'center' }} className="nav-links-wrapper">
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links-wrapper">
           {links.map(l => (
             <a key={l} href={`#${l}`} className="nav-link-item" style={{
               color: 'var(--fg2)', fontSize: '0.78rem', textDecoration: 'none',
