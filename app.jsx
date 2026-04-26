@@ -55,6 +55,7 @@ function Label({ text }) {
 // ─── Nav ─────────────────────────────────────────────────────────────────────
 function Nav({ mode, setMode }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', h);
@@ -64,41 +65,59 @@ function Nav({ mode, setMode }) {
   const links = ['about', 'skills', 'esperienze', 'studi', 'ingrippo'];
 
   return (
-    <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '0 2.5rem', height: '60px',
-      background: scrolled ? 'rgba(11,11,11,0.92)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(12px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-      transition: 'all 0.4s ease',
-    }}>
-      <span style={{ fontFamily: 'Space Mono', fontSize: '0.75rem', color: 'var(--fg3)', letterSpacing: '0.15em' }}>
-        PORTFOLIO
-      </span>
-      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-        {links.map(l => (
-          <a key={l} href={`#${l}`} style={{
-            color: 'var(--fg2)', fontSize: '0.78rem', textDecoration: 'none',
-            letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'color 0.2s',
-          }}
-          onMouseEnter={e => e.target.style.color = 'var(--fg)'}
-          onMouseLeave={e => e.target.style.color = 'var(--fg2)'}
-          >{l}</a>
-        ))}
-        <button onClick={() => setMode(m => m === 'film' ? 'dev' : 'film')} style={{
-          display: 'flex', alignItems: 'center', gap: '6px',
-          background: 'var(--bg3)', border: '1px solid var(--border)',
-          borderRadius: '20px', padding: '5px 12px', cursor: 'pointer',
-          color: 'var(--fg2)', fontSize: '0.72rem', letterSpacing: '0.06em',
-          fontFamily: 'Space Mono', transition: 'all 0.3s',
-        }}>
-          <span style={{ color: mode === 'film' ? 'var(--film)' : 'var(--fg3)' }}>FILM</span>
-          <span style={{ color: 'var(--fg3)' }}>/</span>
-          <span style={{ color: mode === 'dev' ? 'var(--dev)' : 'var(--fg3)' }}>DEV</span>
-        </button>
+    <>
+      <nav className="nav-container" style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        height: '60px',
+        background: scrolled ? 'rgba(11,11,11,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+        transition: 'all 0.4s ease',
+      }}>
+        <span className="nav-brand" style={{ fontFamily: 'Space Mono', fontSize: '0.75rem', color: 'var(--fg3)', letterSpacing: '0.15em', zIndex: 101 }}>
+          PORTFOLIO
+        </span>
+        <div style={{ display: 'flex', alignItems: 'center' }} className="nav-links-wrapper">
+          {links.map(l => (
+            <a key={l} href={`#${l}`} className="nav-link-item" style={{
+              color: 'var(--fg2)', fontSize: '0.78rem', textDecoration: 'none',
+              letterSpacing: '0.08em', textTransform: 'uppercase', transition: 'color 0.2s',
+            }}
+            onMouseEnter={e => e.target.style.color = 'var(--fg)'}
+            onMouseLeave={e => e.target.style.color = 'var(--fg2)'}
+            >{l}</a>
+          ))}
+          <button onClick={() => setMode(m => m === 'film' ? 'dev' : 'film')} style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            background: 'var(--bg3)', border: '1px solid var(--border)',
+            borderRadius: '20px', padding: '5px 12px', cursor: 'pointer',
+            color: 'var(--fg2)', fontSize: '0.72rem', letterSpacing: '0.06em',
+            fontFamily: 'Space Mono', transition: 'all 0.3s', zIndex: 101,
+          }}>
+            <span style={{ color: mode === 'film' ? 'var(--film)' : 'var(--fg3)' }}>FILM</span>
+            <span style={{ color: 'var(--fg3)' }}>/</span>
+            <span style={{ color: mode === 'dev' ? 'var(--dev)' : 'var(--fg3)' }}>DEV</span>
+          </button>
+          
+          <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)} style={{
+            background: 'none', border: 'none', color: 'var(--fg)', fontSize: '1.5rem', cursor: 'pointer', zIndex: 101, padding: '0 0 0 1rem'
+          }}>
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
+      </nav>
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+            {links.map(l => (
+              <a key={l} href={`#${l}`} onClick={() => setMenuOpen(false)} style={{
+                color: 'var(--fg)', fontSize: '1.2rem', textDecoration: 'none',
+                letterSpacing: '0.1em', textTransform: 'uppercase'
+              }}>{l}</a>
+            ))}
+         </div>
       </div>
-    </nav>
+    </>
   );
 }
 
@@ -109,9 +128,9 @@ function Hero({ mode, tweaks }) {
   useEffect(() => { setTimeout(() => setLoaded(true), 100); }, []);
 
   return (
-    <section style={{
+    <section className="hero-section" style={{
       minHeight: '100vh', display: 'flex', flexDirection: 'column',
-      justifyContent: 'center', padding: '0 2.5rem',
+      justifyContent: 'center',
       position: 'relative', overflow: 'hidden',
     }}>
       <div style={{
@@ -209,9 +228,8 @@ function Hero({ mode, tweaks }) {
 function About() {
   const [ref, visible] = useReveal();
   return (
-    <section id="about" ref={ref} style={{ padding: '8rem 2.5rem', maxWidth: '1100px', margin: '0 auto' }}>
-      <div style={{
-        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem',
+    <section id="about" ref={ref} className="section" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+      <div className="grid-2" style={{
         opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)',
         transition: 'all 0.9s ease',
       }}>
@@ -282,11 +300,11 @@ function Skills() {
   const current = tab === 'film' ? filmSkills : devSkills;
 
   return (
-    <section id="skills" ref={ref} style={{ padding: '8rem 2.5rem', background: 'var(--bg2)' }}>
+    <section id="skills" ref={ref} className="section" style={{ background: 'var(--bg2)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s ease' }}>
           <Label text="Skills" />
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
+          <div className="skills-header-flex" style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em' }}>Competenze</h2>
             <div style={{ display: 'flex', background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
               {[['film', '🎬 Audiovisivo'], ['dev', '</> Developer']].map(([key, label]) => (
@@ -369,7 +387,7 @@ function Esperienze() {
   ];
 
   return (
-    <section id="esperienze" ref={ref} style={{ padding: '8rem 2.5rem' }}>
+    <section id="esperienze" ref={ref} className="section">
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s ease' }}>
           <Label text="Esperienze" />
@@ -427,12 +445,12 @@ function TimelineItem({ item, idx, visible }) {
 function Studi() {
   const [ref, visible] = useReveal();
   return (
-    <section id="studi" ref={ref} style={{ padding: '8rem 2.5rem', background: 'var(--bg2)' }}>
+    <section id="studi" ref={ref} className="section" style={{ background: 'var(--bg2)' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(30px)', transition: 'all 0.8s ease' }}>
           <Label text="Studi" />
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '3rem' }}>Formazione</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+          <div className="grid-2-studi">
             <StudiCard period="Diploma" title="Servizi Culturali e dello Spettacolo" sub="Indirizzo Audiovisivo" color="var(--film)" delay={0} visible={visible} desc="Percorso quinquennale professionale con focus su produzione e post-produzione audiovisiva, comunicazione culturale, linguaggi espressivi e tecnica del suono." />
             <StudiCard period="In corso · 2025→" title="Nuove Tecnologie dell'Arte" sub="Accademia di Belle Arti di Napoli" color="var(--dev)" delay={0.15} visible={visible} desc="Corso accademico all'intersezione tra arte contemporanea, tecnologie digitali e sperimentazione creativa. Un laboratorio per ibridare i due mondi." />
           </div>
@@ -494,7 +512,7 @@ function Ingrippo() {
   ];
 
   return (
-    <section id="ingrippo" ref={ref} style={{ padding: '10rem 2.5rem', background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
+    <section id="ingrippo" ref={ref} className="ingrippo-section" style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
       <div style={{
         position: 'absolute', top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -545,9 +563,9 @@ function TensioneCard({ t, i, visible, open, onToggle }) {
         transform: visible ? 'none' : 'translateY(10px)',
         transition: `background 0.3s, opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`,
       }}>
-      <button onClick={onToggle} style={{
-        width: '100%', display: 'flex', alignItems: 'center', gap: '2rem',
-        padding: '2rem', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left',
+      <button className="tensione-card-btn" onClick={onToggle} style={{
+        width: '100%', display: 'flex', alignItems: 'center',
+        background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left',
       }}>
         <span style={{ fontFamily: 'Space Mono', fontSize: '0.7rem', color: open ? 'var(--accent)' : 'var(--fg3)', minWidth: '28px', transition: 'color 0.3s' }}>{t.n}</span>
         <span style={{ flex: 1, fontWeight: 600, fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', color: 'var(--fg)', letterSpacing: '-0.01em' }}>{t.domanda}</span>
@@ -555,7 +573,7 @@ function TensioneCard({ t, i, visible, open, onToggle }) {
       </button>
       <div className={`tensione-body${open ? ' open' : ''}`}>
         <div>
-          <div style={{ padding: '0 2rem 2rem calc(2rem + 28px + 2rem)' }}>
+          <div className="tensione-body-content">
             <p style={{ color: 'var(--fg2)', lineHeight: 1.9, fontSize: '0.95rem', maxWidth: '600px' }}>{t.corpo}</p>
             <span style={{
               display: 'inline-block', marginTop: '1.2rem',
@@ -574,7 +592,7 @@ function TensioneCard({ t, i, visible, open, onToggle }) {
 // ─── Footer ───────────────────────────────────────────────────────────────────
 function Footer({ tweaks }) {
   return (
-    <footer style={{ padding: '4rem 2.5rem', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+    <footer className="footer-section" style={{ borderTop: '1px solid var(--border)', textAlign: 'center' }}>
       <p style={{ fontFamily: 'Space Mono', fontSize: '0.72rem', color: 'var(--fg3)', letterSpacing: '0.15em' }}>
         {tweaks.name.toUpperCase()} · {tweaks.city.toUpperCase()} · 2026
       </p>
