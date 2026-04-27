@@ -186,7 +186,7 @@ function Hero({ mode, tweaks }) {
           <em style={{ color: 'var(--fg)', fontStyle: 'normal' }}>Servizi Culturali e dello Spettacolo</em>,
           indirizzo audiovisivo. E attualmente frequento il corso di{' '}
           <em style={{ color: 'var(--fg)', fontStyle: 'normal' }}>NTA (Nuove tecnologie dell'arte)</em>{' '}
-          all'Accademia di Belle Arti di Napoli.
+           all'Accademia di Belle Arti di Napoli.
         </p>
 
         <div style={{
