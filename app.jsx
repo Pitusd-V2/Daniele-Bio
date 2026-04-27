@@ -241,7 +241,7 @@ function About() {
           <p style={{ color: 'var(--fg2)', lineHeight: 1.8, marginBottom: '1rem' }}>
             Ho frequentato un istituto professionale ad indirizzo{' '}
             <strong style={{ color: 'var(--fg)' }}>Servizi Culturali e dello Spettacolo</strong>,
-            dove ho sviluppato una solida formazione tecnica e artistica nel campo audiovisivo.
+            dove ho sviluppato una formazione tecnica e artistica nel campo audiovisivo.
           </p>
           <p style={{ color: 'var(--fg2)', lineHeight: 1.8 }}>
             In parallelo, la passione per l'informatica mi ha portato a diventare uno{' '}
