@@ -591,7 +591,6 @@ function Footer({ tweaks }) {
       <p style={{ fontFamily: 'Space Mono', fontSize: '0.72rem', color: 'var(--fg3)', letterSpacing: '0.15em' }}>
         {tweaks.name.toUpperCase()} · {tweaks.city.toUpperCase()} · 2026
       </p>
-      <p style={{ color: 'var(--fg3)', fontSize: '0.8rem', marginTop: '0.5rem' }}>Videomaker & Developer</p>
     </footer>
   );
 }
