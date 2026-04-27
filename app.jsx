@@ -246,9 +246,7 @@ function About() {
           <p style={{ color: 'var(--fg2)', lineHeight: 1.8 }}>
             In parallelo, la passione per l'informatica mi ha portato a diventare uno{' '}
             <strong style={{ color: 'var(--fg)' }}>sviluppatore per hobby</strong>: creo tool, giochi e applicazioni,
-            e collaboro con <strong style={{ color: 'var(--fg)' }}>Pred</strong> anche in ambito software.
-            Frequento il corso di <strong style={{ color: 'var(--fg)' }}>NTA</strong> presso l'Accademia di Belle Arti di Napoli.
-          </p>
+            e collaboro con <strong style={{ color: 'var(--fg)' }}>Pred</strong> anche in ambito software. </p >
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center' }}>
           {[
@@ -285,9 +283,6 @@ function Skills() {
     { title: 'Linguaggi & Mercati', desc: 'Individuare, valorizzare e utilizzare stili e linguaggi di specifici mercati e contesti espressivi in prospettiva storica.' },
     { title: 'Produzione Audiovisiva', desc: 'Realizzare prodotti visivi, audiovisivi e sonori in collaborazione con Enti e Istituzioni pubblici e privati.' },
     { title: 'Soluzioni Tecnico-Espressive', desc: 'Ideare e realizzare soluzioni funzionali al concept del prodotto nel rispetto del target individuato.' },
-    { title: 'Montaggio & Composizione', desc: 'Padroneggiare le tecniche di segmentazione dei materiali e ricomposizione coerente nel prodotto finale.' },
-    { title: 'Produzione & Budget', desc: 'Valutare costi, spese e ricavi in ottica autoimprenditoriale, predisponendo soluzioni funzionali al budget.' },
-    { title: 'Divulgazione & Marketing', desc: 'Progettare azioni di divulgazione e commercializzazione dei prodotti visivi, audiovisivi e sonori.' },
   ];
 
   const devSkills = [
